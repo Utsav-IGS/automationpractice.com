@@ -10,23 +10,23 @@ class LoginPage extends Page {
   get logoutButton() {return $(".logout");}
 
 
-  login(email, password) {
-    this.inputUsername.setValue(email);
-    this.inputPassword.setValue(password);
-    this.btnSubmit.click();
+  async login(email, password) {
+    await this.inputUsername.setValue(email);
+    await this.inputPassword.setValue(password);
+    await this.btnSubmit.click();
   }
 
-  goToHomePage() {
-    this.btnHome.click()
+  async goToHomePage() {
+    await this.btnHome.click()
   }
 
-  verifyLogout() {
-    this.logoutButton.click();
+  async verifyLogout() {
+    await this.logoutButton.click();
   }
 
 //overwrite specifc options to adapt it to page object
-  open() {
-    return super.open('index.php?controller=authentication&back=my-account');
+  async open() {
+    return await super.open('index.php?controller=authentication&back=my-account');
   }
 }
 

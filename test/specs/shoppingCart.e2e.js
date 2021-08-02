@@ -2,31 +2,30 @@ const LoginPage = require('../pageobjects/login.page');
 const CartPage = require('../pageobjects/cart.page');
 
 describe('Buy product', () => {
-  before(() => {
-    browser.maximizeWindow();
-    require('expect-webdriverio');
+  before(async () => {
+    await browser.maximizeWindow();
   });
 
-  it('Add item to cart', () => {
-    LoginPage.open();
+  it('Add item to cart', async () => {
+    await LoginPage.open();
 
-    LoginPage.login('a545ea4d5@fgde4d2.com', 'test123');
-    LoginPage.goToHomePage();
+    await LoginPage.login('a545ea4d5@fgde4d2.com', 'test123');
+    await LoginPage.goToHomePage();
 
-    CartPage.selectTshirt();
-    CartPage.addItemToCart();
+    await CartPage.selectTshirt();
+    await CartPage.addItemToCart();
 
-    expect(CartPage.successMessage).toHaveTextContaining(
+    await expect(CartPage.successMessage).toHaveTextContaining(
       'Product successfully added to your shopping cart'
     );
 
-    CartPage.proceedToCheckout();
-    CartPage.clickPayByBankWire();
-    CartPage.confirmOrder();
+    await CartPage.proceedToCheckout();
+    await CartPage.clickPayByBankWire();
+    await CartPage.confirmOrder();
 
-    expect(CartPage.confirmationMessage).toHaveTextContaining('ORDER CONFIRMATION');
+    await expect(CartPage.confirmationMessage).toHaveTextContaining('ORDER CONFIRMATION');
     
-    LoginPage.verifyLogout();
-    expect($('#SubmitLogin')).toBeExisting();
+    await LoginPage.verifyLogout();
+    await expect($('#SubmitLogin')).toBeExisting();
   });
 });

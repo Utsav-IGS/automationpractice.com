@@ -9,36 +9,36 @@ class CartPage {
     get btnConfirmOrder () {return $('button[type="submit"][class="button btn btn-default button-medium"]')}
     get confirmationMessage () {return $('.page-heading')}
 
-    selectTshirt() {
-        this.tshirt[0].click()
+    async selectTshirt() {
+        await this.tshirt[0].click()
     }
 
-    addItemToCart() {
+    async addItemToCart() {
         // this.iframe.waitForDisplayed()
         // browser.switchToFrame(this.iframe)
-        this.btnAddToCart.scrollIntoView()
-        this.btnAddToCart.click()
+        await this.btnAddToCart.scrollIntoView()
+        await this.btnAddToCart.click()
     }
 
-    proceedToCheckout() {
-        this.btnCheckout[0].scrollIntoView()
-        this.btnCheckout[0].click()
-        $('#cart_title').waitForDisplayed()
-        this.btnCheckout[1].scrollIntoView()
-        this.btnCheckout[1].click()
-        $('[name="processAddress"]').waitForDisplayed()
-        $('[name="processAddress"]').click()
-        this.termsOfService.click()
-        $('[name="processCarrier"]').waitForDisplayed()
-        $('[name="processCarrier"]').click()
+    async proceedToCheckout() {
+        await this.btnCheckout[0].scrollIntoView()
+        await this.btnCheckout[0].click()
+        await (await $('#cart_title')).waitForDisplayed()
+        await this.btnCheckout[1].scrollIntoView()
+        await this.btnCheckout[1].click()
+        await (await $('[name="processAddress"]')).waitForDisplayed()
+        await (await $('[name="processAddress"]')).click()
+        await this.termsOfService.click()
+        await (await $('[name="processCarrier"]')).waitForDisplayed()
+        await (await $('[name="processCarrier"]')).click()
     }
 
-    clickPayByBankWire() {
-        this.linkPayByBankWire.click()
+    async clickPayByBankWire() {
+        await this.linkPayByBankWire.click()
     }
 
-    confirmOrder() {
-        this.btnConfirmOrder.click()
+    async confirmOrder() {
+        await this.btnConfirmOrder.click()
     }
  
 
