@@ -33,55 +33,55 @@ class SigninPage extends Page {
 
   //methods
   async enterEmail (email) {
-    this.email.setValue(email);
-    this.createBtn.click();
+    await this.email.setValue(email);
+    await this.createBtn.click();
   }
 
-  selectTitle() {
-    this.gender1.click()
+  async selectTitle() {
+    await this.gender1.click()
   }
 
-  enterFullName(firstName, lastName) {
-    this.customerfirstName.setValue(firstName)
-    this.customerlastName.setValue(lastName)
+  async enterFullName(firstName, lastName) {
+    await this.customerfirstName.setValue(firstName)
+    await this.customerlastName.setValue(lastName)
   }
 
-  enterPassword(password) {
-    this.password.setValue(password)
+  async enterPassword(password) {
+    await this.password.setValue(password)
   }
 
-  enterBirthDate(day, month, year) {
-    this.day.selectByAttribute('value', day)
-    this.month.selectByAttribute('value', month)
-    this.year.selectByAttribute('value', year)
+  async enterBirthDate(day, month, year) {
+    await this.day.selectByAttribute('value', day)
+    await this.month.selectByAttribute('value', month)
+    await this.year.selectByAttribute('value', year)
   }
 
-  enterAdress(firstName, lastName, address) {
-    this.firstName.setValue(firstName)
-    this.lastName.setValue(lastName)
-    this.address.setValue(address)
+  async enterAdress(firstName, lastName, address) {
+    await this.firstName.setValue(firstName)
+    await this.lastName.setValue(lastName)
+    await this.address.setValue(address)
   }
 
-  enterLocation(city, state, zipCode) {
-    this.city.setValue(city)
-    this.state.selectByAttribute('value', state)
-    this.zipCode.setValue(zipCode)
+  async enterLocation(city, state, zipCode) {
+    await this.city.setValue(city)
+    await this.state.selectByAttribute('value', state)
+    await this.zipCode.setValue(zipCode)
   }
 
-  enterMobilePhone(mobile) {
-    this.mobilePhone.setValue(mobile)
+  async enterMobilePhone(mobile) {
+    await this.mobilePhone.setValue(mobile)
   }
 
-  setAlias(alias) {
-    this.alias.setValue(alias)
+  async setAlias(alias) {
+    await this.alias.setValue(alias)
   }
 
-  clickRegisterButton() {
-    this.registerBtn.click()
+  async clickRegisterButton() {
+    await this.registerBtn.click()
   }
 
-  open() {
-    return super.open('index.php?controller=authentication&back=my-account');
+  async open() {
+    return await super.open('index.php?controller=authentication&back=my-account');
   }
 }
 
